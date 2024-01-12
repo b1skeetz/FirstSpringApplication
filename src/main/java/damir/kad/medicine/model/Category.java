@@ -1,9 +1,13 @@
-package model;
+package damir.kad.medicine.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -15,17 +19,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    List<Medicine> medicines;
+    private List<Medicine> medicines;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
