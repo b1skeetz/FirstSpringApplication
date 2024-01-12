@@ -1,4 +1,4 @@
-package damir.kad.medicine.Repositories;
+package damir.kad.medicine.repositories;
 
 import damir.kad.medicine.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
