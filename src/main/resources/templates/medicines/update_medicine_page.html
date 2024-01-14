@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:replace="fragment/head_fragment :: head('Список лекарств')"></th:block>
+<body>
+<th:block th:replace="fragment/header_fragment :: header"></th:block>
+<main>
+    <div class="container">
+        <div class="col-6 offset-3 p-3 bg-white border-1 shadow-sm">
+            <h2 class="h2">Изменение товара</h2>
+            <form th:action="@{/medicines/update}" method="post" th:object="${medicine}">
+                <div class="form-check">
+                    <select class="form-control" th:field="*{category.id}">
+                        <option value="0">Выберите категорию</option>
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input th:field="*{display}" value="true" class="form-check-input" type="radio" id="display-true">
+                    <label class="form-check-label" for="display-true">Отображать в общем списке</label>
+                </div>
+                <div class="form-check">
+                    <input th:field="*{display}" value="false" class="form-check-input" type="radio" id="display-false">
+                    <label class="form-check-label" for="display-false">Не отображать в общем списке</label>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Название лекарства</label>
+                    <input th:field="*{name}" type="text" class="form-control" id="name"
+                           placeholder="Введите название лекарства...">
+                </div>
+                <div class="mb-3">
+                    <label for="dateBuy" class="form-label">Дата покупки лекарства</label>
+                    <input th:field="*{dateBuy}" type="date" class="form-control" id="dateBuy"
+                           placeholder="Введите дату покупки лекарства...">
+                </div>
+                <div class="mb-3">
+                    <label for="dateExpire" class="form-label">Срок годности лекарства</label>
+                    <input th:field="*{dateExpire}" type="date" class="form-control" id="dateExpire"
+                           placeholder="Введите срок годности лекарства...">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Описание лекарства</label>
+                    <input th:field="*{description}" type="text" class="form-control" id="description"
+                           placeholder="Введите описание лекарства...">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Стоимость лекарства</label>
+                    <input th:field="*{price}" type="text" class="form-control" id="price"
+                           placeholder="Введите стоимость лекарства...">
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Изменить лекарство</button>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

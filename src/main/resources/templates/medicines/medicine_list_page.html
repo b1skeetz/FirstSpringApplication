@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:replace="fragment/head_fragment :: head('Список лекарств')"></th:block>
+<body>
+<th:block th:replace="fragment/header_fragment :: header"></th:block>
+<main>
+    <div class="container">
+        <div class="col-8 offset-2 p-3 bg-white border-1 shadow-sm">
+            <h2 class="h2">Список лекарств</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Категория</th>
+                    <th>Название</th>
+                    <th>Дата покупки</th>
+                    <th>Срок годности</th>
+                    <th>Описание</th>
+                    <th>Стоимость</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="medicine : ${medicines}" class="align-middle" th:classappend="${medicine.display ? '' : 'table-light'}">
+                    <td th:text="${medicine.category.name}"></td>
+                    <td th:text="${medicine.name}"></td>
+                    <td th:text="${medicine.dateBuy}"></td>
+                    <td th:text="${medicine.dateExpire}"></td>
+                    <td th:text="${medicine.description}"></td>
+                    <td th:text="${medicine.price}"></td>
+                    <td>
+                        <a th:href="@{/medicines/update(medicineId=${medicine.id})}" class="btn btn-outline-success" th:classappend="${#authorization.expr('hasRole(''admin'')') ? '' : 'disabled'}">Изменить</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/medicines/delete(medicineId=${medicine.id})}" class="btn btn-outline-danger" th:classappend="${#authorization.expr('hasRole(''admin'')') ? '' : 'disabled'}">Удалить</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
