@@ -3,6 +3,7 @@ package damir.kad.medicine.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -25,9 +26,11 @@ public class Medicine {
 
     private String name;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_buy")
     private LocalDate dateBuy;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_expire")
     private LocalDate dateExpire;
 
