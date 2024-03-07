@@ -5,11 +5,11 @@ import damir.kad.medicine.model.enums.UserRole;
 import damir.kad.medicine.repositories.CategoryRepository;
 import damir.kad.medicine.repositories.MedicineRepository;
 import damir.kad.medicine.services.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
